@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import Container from 'react-bootstrap/Container';
+import {Container, Row, Col, Button, Form} from 'react-bootstrap';
+
 import {FaSearch} from 'react-icons/fa';
 
 
@@ -37,16 +38,33 @@ const SearchBar = ({SetGeoData, setInputFocus}) => {
      }
 
     return(
-        <Container className='input-wrapper'>
-            <input placeholder='Enter city...' 
-                value={input}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                onChange={(e) => handleChange(e.target.value)}>
-            </input>
-            <FaSearch id='Search-icon'/>
+        <Container className='mt-5'>
+            <Row className='mb-3'>
+                <Col>
+                    <Form className='d-flex'>
+                        <Form.Control 
+                        type = 'search'
+                        placeholder='Enter city'
+                        className='me-2 rounded-pill'
+                        aria-label='Search'
+                        value={input}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
+                        onChange={(e) => handleChange(e.target.value)}
+                        />
+                    </Form>
+                </Col>
+            </Row>
         </Container>
     );
 }
 
 export default SearchBar;
+
+            // <input placeholder='Enter city...' 
+            //     value={input}
+            //     onFocus={handleFocus}
+            //     onBlur={handleBlur}
+            //     onChange={(e) => handleChange(e.target.value)}>
+            // </input>
+            // <FaSearch id='Search-icon'/>

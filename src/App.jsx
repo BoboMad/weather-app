@@ -4,6 +4,11 @@ import SearchBar from './components/SearchBar/SearchBar';
 import SearchResult from './components/SearchResults/SearchResults';
 import React, {useState} from 'react';
 import CurrentWeather from './components/CurrentWeather/CurrentWeather';
+import AccordionComponent from './components/Accordion/AccordionComponent';
+import Container from 'react-bootstrap/esm/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 function App() {
 
@@ -12,11 +17,31 @@ function App() {
     const [inputFocus, setInputFocus] = useState(false);
 
   return (
-    <>
-      <SearchBar SetGeoData={SetGeoData} setInputFocus={setInputFocus}/>
-      <SearchResult geoData={geoData} SetGeoLocation={SetGeoLocation} inputFocus={inputFocus}/>
-      <CurrentWeather geoLocation={geoLocation}/>
-    </>
+    <Container className='w-50'>
+      <Row>
+        <Col>
+          <SearchBar SetGeoData={SetGeoData} setInputFocus={setInputFocus}/>
+        </Col>
+      </Row>
+
+      <Row className='position-relative'>
+        <Col>
+          <SearchResult geoData={geoData} SetGeoLocation={SetGeoLocation} inputFocus={inputFocus}/>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col>
+          <CurrentWeather geoLocation={geoLocation}/>
+        </Col>
+      </Row>
+      
+      <Row>
+        <Col>
+          <AccordionComponent geoLocation={geoLocation} />
+        </Col>
+      </Row>
+      </Container>
   );
 }
 
